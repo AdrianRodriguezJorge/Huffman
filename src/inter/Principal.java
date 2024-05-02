@@ -35,7 +35,6 @@ public class Principal extends JFrame {
 	private JButton btnTxt;
 	private JTextArea textInput;
 	private JTextArea textCode;
-	private Lienzo objLienzo; // Remove this variable
 	private JScrollPane scrollPane;
 	private JButton btnSaveTree;
 	private JButton btnLoadTree;
@@ -132,7 +131,7 @@ public class Principal extends JFrame {
 		btnSaveTree.setFont(new Font("Dubai", Font.BOLD, 18));
 		btnSaveTree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<Node_External> planeTree = External_Memory_Tree_Convert.convert_Tree_to_ArrayList(h);
+				ArrayList<Node_External> planeTree = Tree_List.convert_Tree_to_ArrayList(h);
 				// convierte el arbol en una lista
 
 				int cantNodes = planeTree.size();// guarda su tamaño
@@ -183,7 +182,7 @@ public class Principal extends JFrame {
 					JOptionPane.showMessageDialog(null, "Something went wrong.", "Error.", 0);
 				}
 
-				h = External_Memory_Tree_Convert.convert_ArrayList_to_Tree(listFromFich);
+				h = Tree_List.convert_ArrayList_to_Tree(listFromFich);
 
 				showEverything();
 
@@ -196,7 +195,7 @@ public class Principal extends JFrame {
 	}
 
 	private void showEverything() {
-		objLienzo = new Lienzo(h); 
+		Lienzo objLienzo = new Lienzo(h); 
 
 		objLienzo.setVisible(true);
 		objLienzo.setSize(new Dimension(1600, 900));
