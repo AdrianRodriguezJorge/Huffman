@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class Tree_List {
 
     // Este metodo convierte el arbol en un arrayList 
-    public static ArrayList<Node_External> convert_Tree_to_ArrayList(HuffmanTree tree) {
+    public static ArrayList<Node_External> treeToList(HuffmanTree tree) {
 
         PreOrderIterator ite = tree.preOrderIterator(); //Iterador en preorden para recorrer
         LinkedList<BinaryTreeNode> list = new LinkedList<>(); //lista para almacenar sus nodos
@@ -36,7 +36,7 @@ public class Tree_List {
             Node_External temp = new Node_External(node.getInfo()); //la info
 
             boolean terminal = (node.getLeft() == null); 
-            int right = node.getRight() == null ? -1 : map.get(node.getRight()); //si es igual a null -1 sino su posicion
+            int right = node.getRight() == null ? -1 : map.get(node.getRight()); //si es igual a null -1 sino la pos de su hijo derecho
 
             temp.setTerminal(terminal); //guardo si es terminal
             temp.setRightNode(right); //guardo la posicion de su hijo derecho
@@ -48,7 +48,7 @@ public class Tree_List {
     }
 
     // Este metodo convierte el arraylist en un arbol
-    public static HuffmanTree convert_ArrayList_to_Tree(ArrayList<Node_External> list) {
+    public static HuffmanTree lisToTree(ArrayList<Node_External> list) {
         HuffmanTree tree = null;
 
         if (!list.isEmpty()) {
@@ -71,7 +71,7 @@ public class Tree_List {
             node.setRight(rightNode); //le doy el valor de su hijo derecho
             createTree(rightNode, posRight, list); //hago una llamada recursiva con el nodo y la pos 
         }
-
+        // sino es terminal == tiene hijo izquierdo, por tanto coge el siguiente de la lista como izq
         if (!list.get(posCurrent).isTerminal()) {//veo si tiene hijo izquierdo
             BinaryTreeNode leftNode = new BinaryTreeNode(list.get(++posCurrent).getInfo()); //creo el nodo con la info incrementando la pos del parametro
             node.setLeft(leftNode);

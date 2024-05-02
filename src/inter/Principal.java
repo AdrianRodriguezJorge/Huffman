@@ -131,7 +131,7 @@ public class Principal extends JFrame {
 		btnSaveTree.setFont(new Font("Dubai", Font.BOLD, 18));
 		btnSaveTree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<Node_External> planeTree = Tree_List.convert_Tree_to_ArrayList(h);
+				ArrayList<Node_External> planeTree = Tree_List.treeToList(h);
 				// convierte el arbol en una lista
 
 				int cantNodes = planeTree.size();// guarda su tamaño
@@ -182,7 +182,7 @@ public class Principal extends JFrame {
 					JOptionPane.showMessageDialog(null, "Something went wrong.", "Error.", 0);
 				}
 
-				h = Tree_List.convert_ArrayList_to_Tree(listFromFich);
+				h = Tree_List.lisToTree(listFromFich);
 
 				showEverything();
 
