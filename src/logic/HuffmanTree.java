@@ -72,12 +72,8 @@ public class HuffmanTree extends BinaryTree<CharFrequency> {
 
         if (!this.isEmpty() && s != null) {
             BinaryTreeNode<CharFrequency> node = null;
-            // String inverted;
             for (int i = 0; i < s.length(); i++) {
                 node = searchLeave(s.charAt(i));
-                // inverted = getEncodeToRoot(node);
-                // inverted = new StringBuilder(inverted).reverse().toString();
-                // code = code.concat(inverted);
                 code += new StringBuilder(getEncodeToRoot(node)).reverse().toString(); // es lo mismo
             }
         }
