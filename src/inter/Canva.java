@@ -1,5 +1,6 @@
 package inter;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
@@ -25,12 +26,13 @@ public class Canva extends JPanel {
     }
 
     private void pintar(Graphics g, int x, int y, BinaryTreeNode<CharFrequency> n) {
-        if (n == null) {
-        } else { // poner scroll pane para cuando sea un arbol muy grande
+        if (n != null) {
+         // poner scroll pane para cuando sea un arbol muy grande
             int EXTRA = nodosCompletos(n) * (ANCHO / 2);
             g.drawOval(x, y, DIAMETRO, DIAMETRO);
+            
             g.drawString(n.getInfo().toString(), x + 17, y + 23);
-            // g.setFont(new java.awt.Font("Dubai",0,18));
+            g.setFont(new Font("Dubai", Font.BOLD, 15));
             // g.fillOval(x, y, y, EXTRA); // ver para el color del nodo
             // g.setColor(Color.CYAN);
             // g.set
