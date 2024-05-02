@@ -131,7 +131,7 @@ public class Principal extends JFrame {
 		btnSaveTree.setFont(new Font("Dubai", Font.BOLD, 18));
 		btnSaveTree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<Node_External> planeTree = Tree_List.treeToList(h);
+				ArrayList<FileNode> planeTree = Tree_List.treeToList(h);
 				// convierte el arbol en una lista
 
 				int cantNodes = planeTree.size();// guarda su tamaño
@@ -140,7 +140,7 @@ public class Principal extends JFrame {
 
 					fich.writeInt(cantNodes);// establece el tamaño
 
-					for (Node_External ne : planeTree) { // se llena con los elementos
+					for (FileNode ne : planeTree) { // se llena con los elementos
 						Convert.writeObject(fich, ne);
 					}
 
@@ -163,15 +163,15 @@ public class Principal extends JFrame {
 		btnLoadTree.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RandomAccessFile fich;
-				ArrayList<Node_External> listFromFich = new ArrayList<>();
+				ArrayList<FileNode> listFromFich = new ArrayList<>();
 				try {
 					fich = new RandomAccessFile("file.bin", "rw");
 
-					Node_External temp = null;
+					FileNode temp = null;
 
 					int cantNodes = fich.readInt();
 					for (int i = 0; i < cantNodes; i++) {
-						temp = (Node_External) Convert.readObject(fich);
+						temp = (FileNode) Convert.readObject(fich);
 						listFromFich.add(temp);
 					}
 					input = (String) Convert.readObject(fich);

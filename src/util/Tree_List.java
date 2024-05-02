@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class Tree_List {
 
     // Este metodo convierte el arbol en un arrayList 
-    public static ArrayList<Node_External> treeToList(HuffmanTree tree) {
+    public static ArrayList<FileNode> treeToList(HuffmanTree tree) {
 
         PreOrderIterator ite = tree.preOrderIterator(); //Iterador en preorden para recorrer
         LinkedList<BinaryTreeNode> list = new LinkedList<>(); //lista para almacenar sus nodos
@@ -26,13 +26,13 @@ public class Tree_List {
         }
 
         Iterator<BinaryTreeNode> iteList = list.iterator(); //Iterador para recorrer la lista
-        ArrayList<Node_External> aux = new ArrayList<>(list.size()); //lista para guardar la info de los nodos
+        ArrayList<FileNode> aux = new ArrayList<>(list.size()); //lista para guardar la info de los nodos
 
         i = 0;
 
         while (iteList.hasNext()) {
             BinaryTreeNode node = iteList.next(); //guardo el nodo
-            Node_External temp = new Node_External(node.getInfo()); //la info
+            FileNode temp = new FileNode(node.getInfo()); //la info
 
             boolean terminal = (node.getLeft() == null); 
             int right = node.getRight() == null ? -1 : map.get(node.getRight()); //si es igual a null -1 sino la pos de su hijo derecho
@@ -47,7 +47,7 @@ public class Tree_List {
     }
 
     // Este metodo convierte el arraylist en un arbol
-    public static HuffmanTree lisToTree(ArrayList<Node_External> list) {
+    public static HuffmanTree lisToTree(ArrayList<FileNode> list) {
         HuffmanTree tree = null;
 
         if (!list.isEmpty()) {
@@ -61,7 +61,7 @@ public class Tree_List {
     }
 
     // Este metodo crea el arbol de forma recursiva
-    private static void createTree(BinaryTreeNode node, int posCurrent, ArrayList<Node_External> list) {
+    private static void createTree(BinaryTreeNode node, int posCurrent, ArrayList<FileNode> list) {
         int posRight = list.get(posCurrent).getRightNode(); //guardo la posicion
        
 
