@@ -142,11 +142,11 @@ public class Principal extends JFrame {
 					fich.writeInt(cantNodes);// establece el tamaño
 
 					for (Node_External ne : planeTree) { // se llena con los elementos
-						ByteManager.writeObject(fich, ne);
+						Convert.writeObject(fich, ne);
 					}
 
-					ByteManager.writeObject(fich, input); // guardar la frase
-					ByteManager.writeObject(fich, code); // guardar el código
+					Convert.writeObject(fich, input); // guardar la frase
+					Convert.writeObject(fich, code); // guardar el código
 
 					fich.close(); // lo cierra
 				} catch (Exception e) {
@@ -172,11 +172,11 @@ public class Principal extends JFrame {
 
 					int cantNodes = fich.readInt();
 					for (int i = 0; i < cantNodes; i++) {
-						temp = (Node_External) ByteManager.readObject(fich);
+						temp = (Node_External) Convert.readObject(fich);
 						listFromFich.add(temp);
 					}
-					input = (String) ByteManager.readObject(fich);
-					code = (String) ByteManager.readObject(fich);
+					input = (String) Convert.readObject(fich);
+					code = (String) Convert.readObject(fich);
 
 					fich.close();
 				} catch (Exception e) {

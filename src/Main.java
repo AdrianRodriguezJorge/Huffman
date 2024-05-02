@@ -1,6 +1,6 @@
 import java.awt.EventQueue;
 
-import inter.Principal;
+import inter.*;
 
 public class Main {
      public static void main(String[] args) {
