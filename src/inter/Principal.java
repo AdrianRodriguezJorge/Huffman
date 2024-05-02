@@ -2,10 +2,9 @@ package inter;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
+
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -14,24 +13,19 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-import cu.edu.cujae.ceis.tree.binary.BinaryTree;
 import logic.*;
 import util.*;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
-import javax.swing.JViewport;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import java.awt.Rectangle;
-
 import javax.swing.border.MatteBorder;
 import javax.swing.JScrollPane;
-
 
 // TODO: Para mi el file esta muy largo, yo sacaria cada una de las funciones void donde se define la interfas y las pondria en una clase aparte
 public class Principal extends JFrame {
@@ -48,22 +42,6 @@ public class Principal extends JFrame {
 	private HuffmanTree h;
 	private String input;
 	private String code;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public Principal() {
 		setBackground(new Color(34, 40, 49));
@@ -136,7 +114,9 @@ public class Principal extends JFrame {
 		btnTeclado.setFont(new Font("Dubai", Font.BOLD, 18));
 		btnTeclado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input = JOptionPane.showInputDialog(null, "Ingrese la cadena a codificar", "Huffman", 1);
+				do {
+					input = JOptionPane.showInputDialog(null, "Ingrese la cadena a codificar", "Huffman", 1);
+				} while (input == null);
 
 				h = new HuffmanTree(input);
 
@@ -213,8 +193,6 @@ public class Principal extends JFrame {
 		btnLoadTree.setBounds(730, 360, 185, 49);
 		contentPane.add(btnLoadTree);
 
-
-
 		changeColors(); // para la paleta de colores
 	}
 
@@ -249,24 +227,23 @@ public class Principal extends JFrame {
 	}
 
 	public void changeColors() {
-		contentPane.setBorder(new MatteBorder(6, 6, 6, 6, new Color(4,13,18))); // borde
-		contentPane.setBackground(new Color(24,61,61)); // fondo
-		
-		textInput.setBackground(new Color(92,131,116)); // textAreas
-		textCode.setBackground(new Color(92,131,116));
-		
-		btnTxt.setBackground(new Color(92,131,116)); // botones
-		btnTeclado.setBackground(new Color(92,131,116));
-		btnSaveTree.setBackground(new Color(92,131,116));
-		btnLoadTree.setBackground(new Color(92,131,116));
-		
-		textInput.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4,13,18)));
-		textCode.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4,13,18)));
-		btnTxt.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4,13,18)));
-		btnTeclado.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4,13,18)));
-		btnSaveTree.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4,13,18)));
-		btnLoadTree.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4,13,18)));
+		contentPane.setBorder(new MatteBorder(6, 6, 6, 6, new Color(4, 13, 18))); // borde
+		contentPane.setBackground(new Color(24, 61, 61)); // fondo
+
+		textInput.setBackground(new Color(92, 131, 116)); // textAreas
+		textCode.setBackground(new Color(92, 131, 116));
+
+		btnTxt.setBackground(new Color(92, 131, 116)); // botones
+		btnTeclado.setBackground(new Color(92, 131, 116));
+		btnSaveTree.setBackground(new Color(92, 131, 116));
+		btnLoadTree.setBackground(new Color(92, 131, 116));
+
+		textInput.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4, 13, 18)));
+		textCode.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4, 13, 18)));
+		btnTxt.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4, 13, 18)));
+		btnTeclado.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4, 13, 18)));
+		btnSaveTree.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4, 13, 18)));
+		btnLoadTree.setBorder(new MatteBorder(2, 2, 2, 2, new Color(4, 13, 18)));
 	}
-	
 
 }

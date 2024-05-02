@@ -15,7 +15,7 @@ public class HuffmanTree extends BinaryTree<CharFrequency> {
         BinaryTreeNode<CharFrequency> father = null;
         ArrayList<CharFrequency> list = makeCharList(input);
 
-        if (!list.isEmpty()) {
+        if (list.size() > 1) {
             for (CharFrequency cf : list) {
                 nodeList.add(new BinaryTreeNode<>(cf));
             }
@@ -35,6 +35,7 @@ public class HuffmanTree extends BinaryTree<CharFrequency> {
 
             root = father;
         }
+        else root = new BinaryTreeNode<CharFrequency>(list.get(0));
     }
 
     public HuffmanTree() {
