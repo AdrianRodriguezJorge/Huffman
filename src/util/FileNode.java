@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class FileNode <E>  implements Serializable {
     private E info;
     private boolean terminal;
-    private int rightNode;
+    private int posRightSon;
 
     public FileNode(E info) {
         this.info = info;
@@ -19,8 +19,8 @@ public class FileNode <E>  implements Serializable {
         this.terminal = terminal;
     }
 
-    public void setRightNode(int rightNode) {
-        this.rightNode = rightNode;
+    public void setPosRightSon(int posRightSon) {
+        this.posRightSon = posRightSon;
     }
 
     public E getInfo() {
@@ -31,7 +31,7 @@ public class FileNode <E>  implements Serializable {
         return terminal;
     }
 
-    public int getRightNode() {
-        return rightNode;
+    public int getPosRightSon() {
+        return posRightSon;
     }
 }

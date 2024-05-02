@@ -38,7 +38,7 @@ public class Tree_List {
             int right = node.getRight() == null ? -1 : map.get(node.getRight()); //si es igual a null -1 sino la pos de su hijo derecho
 
             temp.setTerminal(terminal); //guardo si es terminal
-            temp.setRightNode(right); //guardo la posicion de su hijo derecho
+            temp.setPosRightSon(right); //guardo la posicion de su hijo derecho
 
             aux.add(i++, temp); //guardo en la posicion especificada el nodo
 
@@ -62,13 +62,13 @@ public class Tree_List {
 
     // Este metodo crea el arbol de forma recursiva
     private static void createTree(BinaryTreeNode node, int posCurrent, ArrayList<FileNode> list) {
-        int posRight = list.get(posCurrent).getRightNode(); //guardo la posicion
+        int posRight = list.get(posCurrent).getPosRightSon(); //guardo la posicion
        
 
         if (posRight != -1) { //si es distinto de -1 quiere decir que tiene hijo derecho
-            BinaryTreeNode rightNode = new BinaryTreeNode(list.get(posRight).getInfo()); //creo un BinaryTreeNode con la info
-            node.setRight(rightNode); //le doy el valor de su hijo derecho
-            createTree(rightNode, posRight, list); //hago una llamada recursiva con el nodo y la pos 
+            BinaryTreeNode posRightSon = new BinaryTreeNode(list.get(posRight).getInfo()); //creo un BinaryTreeNode con la info
+            node.setRight(posRightSon); //le doy el valor de su hijo derecho
+            createTree(posRightSon, posRight, list); //hago una llamada recursiva con el nodo y la pos 
         }
         // sino es terminal == tiene hijo izquierdo, por tanto coge el siguiente de la lista como izq
         if (!list.get(posCurrent).isTerminal()) {//veo si tiene hijo izquierdo
