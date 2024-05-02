@@ -2,7 +2,6 @@ package util;
 
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.iterators.binary.PreOrderIterator;
-import cu.edu.cujae.ceis.tree.iterators.binary.SymmetricIterator;
 import logic.HuffmanTree;
 
 import java.util.ArrayList;
