@@ -24,6 +24,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.ScrollPane;
+
 import javax.swing.border.MatteBorder;
 import javax.swing.JScrollPane;
 
@@ -53,6 +55,11 @@ public class Principal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(45, 351, 657, 70);
+		scrollPane_1.setBorder(new MatteBorder(1, 1, 1, 1, new Color(4, 13, 18)));
+		contentPane.add(scrollPane_1);
+
 		textInput = new JTextArea();
 		textInput.setDisabledTextColor(new Color(0, 0, 0));
 		textInput.setEnabled(false);
@@ -61,7 +68,14 @@ public class Principal extends JFrame {
 		textInput.setFont(new Font("Dubai", Font.BOLD, 18)); // trata de poner constantes para las funtes
 		textInput.setBounds(45, 351, 657, 70);
 		textInput.setForeground(Color.BLACK);
-		contentPane.add(textInput);
+		textInput.setLineWrap(true); // se ajusta auto.
+		textInput.setWrapStyleWord(true); 
+		scrollPane_1.setViewportView(textInput);
+
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(45, 445, 657, 70);
+		scrollPane_2.setBorder(new MatteBorder(1, 1, 1, 1, new Color(4, 13, 18)));
+		contentPane.add(scrollPane_2);
 
 		textCode = new JTextArea();
 		textCode.setDisabledTextColor(new Color(0, 0, 0));
@@ -71,7 +85,9 @@ public class Principal extends JFrame {
 		textCode.setFont(new Font("Dubai", Font.BOLD, 18));
 		textCode.setBounds(45, 445, 657, 70);
 		textCode.setForeground(Color.BLACK);
-		contentPane.add(textCode);
+		textCode.setLineWrap(true); // se ajusta auto.
+		textCode.setWrapStyleWord(true); 
+		scrollPane_2.setViewportView(textCode);
 
 		UIManager.put("TextArea.disabledForeground", Color.BLACK);
 
@@ -195,21 +211,21 @@ public class Principal extends JFrame {
 	}
 
 	private void showEverything() {
-		Lienzo objLienzo = new Lienzo(h); 
+		Canva objCanva = new Canva(h); 
 
-		objLienzo.setVisible(true);
-		objLienzo.setSize(new Dimension(1600, 900));
-		objLienzo.setPreferredSize(new Dimension(1200, 1000));
-		objLienzo.setMinimumSize(new Dimension(300, 300));
-		objLienzo.setMaximumSize(new Dimension(900, 900));
-		objLienzo.setBackground(new Color(230, 230, 250));
+		objCanva.setVisible(true);
+		objCanva.setSize(new Dimension(1600, 900));
+		objCanva.setPreferredSize(new Dimension(1200, 1000));
+		objCanva.setMinimumSize(new Dimension(300, 300));
+		objCanva.setMaximumSize(new Dimension(900, 900));
+		objCanva.setBackground(new Color(230, 230, 250));
 
-		objLienzo.setLocation(0, 65);
+		objCanva.setLocation(0, 65);
 		scrollPane.setBounds(50, 25, 650, 250);
 		contentPane.add(scrollPane);
 
-		contentPane.add(objLienzo);
-		scrollPane.setViewportView(objLienzo);
+		contentPane.add(objCanva);
+		scrollPane.setViewportView(objCanva);
 
 		JScrollBar horizontalScrollBar = scrollPane.getHorizontalScrollBar();
 		horizontalScrollBar.setValue(horizontalScrollBar.getWidth() / 2);
