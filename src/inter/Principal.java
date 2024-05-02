@@ -116,7 +116,7 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				do {
 					input = JOptionPane.showInputDialog(null, "Ingrese la cadena a codificar", "Huffman", 1);
-				} while (input == null);
+				} while (input == null || input.equals(""));
 
 				h = new HuffmanTree(input);
 
@@ -183,8 +183,7 @@ public class Principal extends JFrame {
 					JOptionPane.showMessageDialog(null, "Something went wrong.", "Error.", 0);
 				}
 
-				h = External_Memory_Tree_Convert
-						.convert_ArrayList_to_Tree(listFromFich);
+				h = External_Memory_Tree_Convert.convert_ArrayList_to_Tree(listFromFich);
 
 				showEverything();
 
@@ -197,9 +196,8 @@ public class Principal extends JFrame {
 	}
 
 	private void showEverything() {
-		objLienzo = new Lienzo(); // VISTA
-		Controlador objControlador = new Controlador(objLienzo, h); // CONTROLADOR
-		objControlador.iniciar();
+		objLienzo = new Lienzo(h); 
+
 		objLienzo.setVisible(true);
 		objLienzo.setSize(new Dimension(1600, 900));
 		objLienzo.setPreferredSize(new Dimension(1200, 1000));

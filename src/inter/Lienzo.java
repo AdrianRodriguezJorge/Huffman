@@ -12,7 +12,8 @@ public class Lienzo extends JPanel {
     public static final int RADIO = DIAMETRO / 2;
     public static final int ANCHO = 50; // estaba en 50
 
-    public void setObjArbol(HuffmanTree objArbol) {
+    public Lienzo (HuffmanTree objArbol) {
+        super();
         this.objArbol = objArbol;
         repaint();
     }
