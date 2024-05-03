@@ -47,38 +47,35 @@ public class Tree_List {
         return aux; //retorno la lista
     }
 
-    // Este metodo convierte el arraylist serializable en un arbol
+    // Este metodo convierte el arraylist en un arbol
     public static HuffmanTree convert_ArrayList_to_Tree(ArrayList<Node_External> list) {
-        HuffmanTree outTree = null;
+        HuffmanTree tree = null;
 
         if (!list.isEmpty()) {
-            // Creo el nodo raiz, y empienzo a contruir el arbol de forma recursica
-            BinaryTreeNode rootNode = new BinaryTreeNode(list.get(0).getInfo());
-            create_Tree_Recursive(rootNode, 0, list);
-            outTree = new HuffmanTree(rootNode);
+            BinaryTreeNode root = new BinaryTreeNode(list.get(0).getInfo()); //nodo raiz
+            createTree(root, 0, list); //llamo a la funcion que construye el arbol recursivamente
+            tree = new HuffmanTree(root);
         }
-
-        return outTree;
+        
+        return tree;
 
     }
 
     // Este metodo crea el arbol de forma recursiva
-    private static void create_Tree_Recursive(BinaryTreeNode node, int posCurrent, ArrayList<Node_External> list) {
-        int posRight = list.get(posCurrent).getRightNode();
-        ;
+    private static void createTree(BinaryTreeNode node, int posCurrent, ArrayList<Node_External> list) {
+        int posRight = list.get(posCurrent).getRightNode(); //guardo la posicion
+       
 
-        // Compruebo si tiene hijo derecho, si tiene continuo la llamada recursiva
-        if (posRight != -1) {
-            BinaryTreeNode rightNode = new BinaryTreeNode(list.get(posRight).getInfo());
-            node.setRight(rightNode);
-            create_Tree_Recursive(rightNode, posRight, list);
+        if (posRight != -1) { //si es distinto de -1 quiere decir que tiene hijo derecho
+            BinaryTreeNode rightNode = new BinaryTreeNode(list.get(posRight).getInfo()); //creo un BinaryTreeNode con la info
+            node.setRight(rightNode); //le doy el valor de su hijo derecho
+            createTree(rightNode, posRight, list); //hago una llamada recursiva con el nodo y la pos 
         }
 
-        // Compruebo si tiene hijo izquierdo, si tiene continuo la llamada recursiva
-        if (!list.get(posCurrent).isTerminal()) {
-            BinaryTreeNode leftNode = new BinaryTreeNode(list.get(++posCurrent).getInfo());
+        if (!list.get(posCurrent).isTerminal()) {//veo si tiene hijo izquierdo
+            BinaryTreeNode leftNode = new BinaryTreeNode(list.get(++posCurrent).getInfo()); //creo el nodo con la info incrementando la pos del parametro
             node.setLeft(leftNode);
-            create_Tree_Recursive(leftNode, posCurrent, list);
+            createTree(leftNode, posCurrent, list); //hago llamada recursiva
         }
 
     }
